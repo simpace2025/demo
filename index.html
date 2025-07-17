@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>ĐỀ ÔN TẬP TIẾNG ANH -  ĐỀ SỐ 4</title>
+  <title>ĐỀ ÔN TẬP TIẾNG ANH - ĐỀ SỐ 4</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -26,6 +26,13 @@
     .right {
       width: 33.33%;
       background-color: #fff;
+      position: relative;
+    }
+    iframe {
+      width: 100%;
+      height: 2000px;
+      border: none;
+      transition: all 0.3s ease;
     }
     img {
       width: 100%;
@@ -34,21 +41,35 @@
     h2 {
       margin-bottom: 20px;
     }
-    iframe {
-      width: 100%;
-      height: 2000px;
+
+    /* Nút thu nhỏ */
+    .shrink-btn {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #ccc;
       border: none;
+      cursor: pointer;
+    }
+
+    /* Textarea tàng hình bắt input */
+    .fake-input {
+      position: absolute;
+      top: 100px;
+      left: 10px;
+      width: 95%;
+      height: 80px;
+      opacity: 0;
+      z-index: 10;
+      resize: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
-
     <div class="left">
       <h2>📘ĐỀ ÔN TẬP TIẾNG ANH - ĐỀ SỐ 4</h2>
       <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/e1.png"><br>
       <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/e2.png"><br>
-
       <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r1.png"><br>
       <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r2.png"><br>
       <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r3.png"><br>
@@ -93,13 +114,48 @@
 
     <div class="right">
       <h2>✅ Trả lời</h2>
+
+      <!-- 🔽 Textarea giả để bắt sự kiện nhập -->
+      <textarea 
+        class="fake-input" 
+        placeholder="Nhập ở đây"
+        oninput="window.postMessage('__expand__', '*')">
+      </textarea>
+
+      <!-- 🔽 IFRAME GOOGLE FORM -->
       <iframe 
-        src="https://docs.google.com/forms/d/e/1FAIpQLSel-_Zp4nBG5rJ_pLNFzFQyyFc4ZpUu5cBl6S4JtZLRG8xZOA/viewform?embedded=true" 
+        id="formFrame"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSel-_Zp4nBG5rJ_pLNFzFQyyFc4ZpUu5cBl6S4JtZLRG8xZOA/viewform?embedded=true"
         allowfullscreen>
         Loading…
       </iframe>
-    </div>
 
+      <button class="shrink-btn" onclick="shrinkForm()">🔙 Thu nhỏ form</button>
+    </div>
   </div>
+
+  <!-- 🔽 Script mở rộng form khi người dùng gõ -->
+  <script>
+    const iframe = document.getElementById("formFrame");
+
+    window.addEventListener("message", function(event) {
+      if (event.data === "__expand__") {
+        iframe.style.position = "fixed";
+        iframe.style.top = "0";
+        iframe.style.left = "0";
+        iframe.style.width = "100vw";
+        iframe.style.height = "100vh";
+        iframe.style.zIndex = "9999";
+        iframe.style.backgroundColor = "#fff";
+      }
+    });
+
+    function shrinkForm() {
+      iframe.style.position = "static";
+      iframe.style.width = "100%";
+      iframe.style.height = "2000px";
+      iframe.style.zIndex = "1";
+    }
+  </script>
 </body>
 </html>
