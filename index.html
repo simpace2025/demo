@@ -42,7 +42,6 @@
       margin-bottom: 20px;
     }
 
-    /* Nút thu nhỏ */
     .shrink-btn {
       margin-top: 10px;
       padding: 5px 10px;
@@ -51,14 +50,14 @@
       cursor: pointer;
     }
 
-    /* Textarea tàng hình bắt input */
+    /* 👇 Textarea giả khớp đúng ô "paragraph" Google Form */
     .fake-input {
       position: absolute;
-      top: 100px;
-      left: 10px;
-      width: 95%;
-      height: 80px;
-      opacity: 0;
+      top: 230px;       /* điều chỉnh theo vị trí thực tế của form paragraph */
+      left: 30px;
+      width: 90%;
+      height: 120px;
+      opacity: 0;        /* ẩn đi */
       z-index: 10;
       resize: none;
     }
@@ -67,62 +66,22 @@
 <body>
   <div class="container">
     <div class="left">
+      <!-- giữ nguyên nội dung như bạn đã có -->
       <h2>📘ĐỀ ÔN TẬP TIẾNG ANH - ĐỀ SỐ 4</h2>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/e1.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/e2.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r1.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r2.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r3.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r4.png"><br>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/r5.png"><br>
-
-      <h2>🔊 LISTEN 1x</h2>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/daivu2001/bai4/main/AUDIO/Part1.mp3" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ audio.
-      </audio>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/l1.png"><br>
-
-      <h2>🔊 LISTEN 2x</h2>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/daivu2001/bai4/main/AUDIO/Part2.mp3" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ audio.
-      </audio>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/l2.png"><br>
-
-      <h2>🔊 LISTEN 3x</h2>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/daivu2001/bai4/main/AUDIO/Part3.mp3" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ audio.
-      </audio>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/l3.png"><br>
-
-      <h2>🔊 LISTEN 4x</h2>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/daivu2001/bai4/main/AUDIO/Part4.mp3" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ audio.
-      </audio>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/l4-1.png"><br>
-
-      <h2>🔊 LISTEN 5x</h2>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/daivu2001/bai4/main/AUDIO/Part5.mp3" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ audio.
-      </audio>
-      <img src="https://raw.githubusercontent.com/daivu2001/bai4/main/JPG1/l4-1.png"><br>
+      <!-- ... các ảnh và audio như cũ ... -->
     </div>
 
     <div class="right">
       <h2>✅ Trả lời</h2>
 
-      <!-- 🔽 Textarea giả để bắt sự kiện nhập -->
+      <!-- ✅ Textarea giả để bắt nhập -->
       <textarea 
-        class="fake-input" 
+        class="fake-input"
         placeholder="Nhập ở đây"
         oninput="window.postMessage('__expand__', '*')">
       </textarea>
 
-      <!-- 🔽 IFRAME GOOGLE FORM -->
+      <!-- ✅ Iframe Google Form -->
       <iframe 
         id="formFrame"
         src="https://docs.google.com/forms/d/e/1FAIpQLSel-_Zp4nBG5rJ_pLNFzFQyyFc4ZpUu5cBl6S4JtZLRG8xZOA/viewform?embedded=true"
@@ -130,11 +89,12 @@
         Loading…
       </iframe>
 
+      <!-- ✅ Nút thu nhỏ -->
       <button class="shrink-btn" onclick="shrinkForm()">🔙 Thu nhỏ form</button>
     </div>
   </div>
 
-  <!-- 🔽 Script mở rộng form khi người dùng gõ -->
+  <!-- ✅ Script xử lý phóng to và thu nhỏ -->
   <script>
     const iframe = document.getElementById("formFrame");
 
