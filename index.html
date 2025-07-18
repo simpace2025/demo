@@ -9,11 +9,12 @@
     .icon-button {
       background-color: #f0f0f0;
       border: 1px solid #ccc;
-      padding: 10px;
+      padding: 15px;
       border-radius: 5px;
-      font-size: 18px;
-      display: inline-flex;
-      align-items: center;
+      font-size: 24px; /* Increase font size */
+      display: block;  /* Ensure icons appear on their own line */
+      text-align: center; /* Center the text and icon */
+      margin-bottom: 15px; /* Add space between buttons */
       cursor: pointer;
       transition: background-color 0.3s;
     }
@@ -23,7 +24,8 @@
     }
 
     .icon-button i {
-      margin-right: 8px;
+      font-size: 40px; /* Increase icon size */
+      margin-bottom: 10px; /* Space between icon and text */
     }
   </style>
 </head>
@@ -34,17 +36,18 @@
     <source src="your-audio-file.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
- <h2>
+
+  <!-- Reading Icon -->
   <div class="icon-button">
-    <i class="fas fa-book-open"></i> Reading <br>
+    <i class="fas fa-book-open"></i>
+    Reading
   </div>
- </h2>
-<h2>
+
+  <!-- Writing Icon -->
   <div class="icon-button">
-    <i class="fas fa-pencil-alt"></i> Writing
+    <i class="fas fa-pencil-alt"></i>
+    Writing
   </div>
-</h2>
-</br>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
