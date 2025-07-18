@@ -1,121 +1,48 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ĐỀ ÔN TẬP TIẾNG ANH - khung trong suốt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icons for Reading and Writing</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      display: flex;
-      height: 100vh;
-    }
-    .left, .right {
-      height: 100%;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .left {
-      width: 66.66%;
-      border-right: 2px solid #ccc;
-      background-color: #f9f9f9;
-    }
-    .right {
-      width: 33.33%;
-      background-color: #fff;
-      position: relative;
-    }
-    iframe {
-      width: 100%;
-      height: 2000px;
-      border: none;
-      transition: all 0.3s ease;
-    }
-    img {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    .shrink-btn {
-      margin-top: 10px;
-      padding: 5px 10px;
-      background-color: #ccc;
-      border: none;
+    /* Style for the buttons */
+    .icon-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    /* 👇 Textarea giả khớp đúng ô "paragraph" Google Form */
-    .fake-input {
-      position: absolute;
-      top: 230px;       /* điều chỉnh theo vị trí thực tế của form paragraph */
-      left: 30px;
-      width: 90%;
-      height: 120px;
-      opacity: 0;        /* ẩn đi */
-      z-index: 10;
-      resize: none;
+    .icon-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .icon-button i {
+      margin-right: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="left">
-      <!-- giữ nguyên nội dung như bạn đã có -->
-      <h2>📘ĐỀ ÔN TẬP TIẾNG ANH - ĐỀ SỐ 4</h2>
-      <!-- ... các ảnh và audio như cũ ... -->
-    </div>
 
-    <div class="right">
-      <h2>✅ Trả lời</h2>
+  <h2>🔊 LISTEN 5x</h2>
+  <audio controls>
+    <source src="your-audio-file.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-      <!-- ✅ Textarea giả để bắt nhập -->
-      <textarea 
-        class="fake-input"
-        placeholder="Nhập ở đây"
-        oninput="window.postMessage('__expand__', '*')">
-      </textarea>
-
-      <!-- ✅ Iframe Google Form -->
-      <iframe 
-        id="formFrame"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSel-_Zp4nBG5rJ_pLNFzFQyyFc4ZpUu5cBl6S4JtZLRG8xZOA/viewform?embedded=true"
-        allowfullscreen>
-        Loading…
-      </iframe>
-
-      <!-- ✅ Nút thu nhỏ -->
-      <button class="shrink-btn" onclick="shrinkForm()">🔙 Thu nhỏ form</button>
-    </div>
+  <div class="icon-button">
+    <i class="fas fa-book-open"></i> Reading
   </div>
 
-  <!-- ✅ Script xử lý phóng to và thu nhỏ -->
-  <script>
-    const iframe = document.getElementById("formFrame");
+  <div class="icon-button">
+    <i class="fas fa-pencil-alt"></i> Writing
+  </div>
 
-    window.addEventListener("message", function(event) {
-      if (event.data === "__expand__") {
-        iframe.style.position = "fixed";
-        iframe.style.top = "0";
-        iframe.style.left = "0";
-        iframe.style.width = "100vw";
-        iframe.style.height = "100vh";
-        iframe.style.zIndex = "9999";
-        iframe.style.backgroundColor = "#fff";
-      }
-    });
-
-    function shrinkForm() {
-      iframe.style.position = "static";
-      iframe.style.width = "100%";
-      iframe.style.height = "2000px";
-      iframe.style.zIndex = "1";
-    }
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>
